@@ -1,0 +1,25 @@
+items:
+  - name: Azure SDK for Go
+    href: index.yml
+  - name: 概述
+    items:
+      - name: 安装
+        href: azure-sdk-go-install.md
+      - name: 工具
+        href: azure-sdk-go-tools.md
+  - name: Go SDK 快速入门
+    items:
+      - name: 虚拟机和资源模板
+        href: azure-sdk-go-qs-vm.md
+      - name: Azure Blob 存储
+        href: /azure/storage/blobs/storage-quickstart-blobs-go?toc=%2fgo%2fazure%2ftoc.json
+      - name: Azure Database for PostgreSQL
+        href: /azure/postgresql/connect-go?toc=%2fgo%2fazure%2ftoc.json
+      - name: Azure Database for MySQL
+        href: /azure/mysql/connect-go?toc=%2fgo%2fazure%2ftoc.json
+      - name: Azure SQL 数据库
+        href: /azure/sql-database/sql-database-connect-query-go?toc=%2fgo%2fazure%2ftoc.json
+  - name: 示例
+    href: 'http://github.com/azure-samples/azure-sdk-for-go-samples'
+  - name: API 参考
+    href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go'
