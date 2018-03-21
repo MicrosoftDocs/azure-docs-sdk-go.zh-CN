@@ -8,11 +8,11 @@ ms.date: 02/08/2018
 ms.topic: quickstart
 ms.devlang: go
 manager: routlaw
-ms.openlocfilehash: e530d944deca40e9e6c29b6c2768e2367822714e
-ms.sourcegitcommit: aaa8c37880332625f858a38f5918e6cf581bf48d
+ms.openlocfilehash: ae460dbf21b13c40f3d564274f8b790afe005aae
+ms.sourcegitcommit: af3473779cd7c2978f290fbdc51ee15eb1130840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="quickstart-deploy-an-azure-virtual-machine-from-a-template-with-the-azure-sdk-for-go"></a>快速入门：使用 Azure SDK for Go 从模板部署 Azure 虚拟机
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/15/2018
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-若要以非交互方式登录到应用程序，需要一个服务主体。 服务主体是创建唯一用户标识的基于角色的身份验证 (RBAC) 的一部分。 若要使用 CLI 创建新的服务主体，请运行以下命令：
+若要以非交互方式登录到应用程序，需要一个服务主体。 服务主体是基于角色的访问控制 (RBAC) 的一部分，该访问控制创建唯一用户标识。 若要使用 CLI 创建新的服务主体，请运行以下命令：
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name az-go-vm-quickstart
@@ -79,7 +79,7 @@ go get -u -d github.com/azure-samples/azure-sdk-for-go-samples/quickstart/deploy
     }
 ```
 
-* `vm_password`：VM 用户帐户的密码。 该密码的长度必须为 6-72 个字符，并且必须包含以下字符中的 3 种：
+* `vm_password`：VM 用户帐户的密码。 该密码的长度必须为 12-72 个字符，并且必须包含以下字符中的 3 种：
   * 小写字母
   * 大写字母
   * 数字
