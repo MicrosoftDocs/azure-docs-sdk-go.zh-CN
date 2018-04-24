@@ -3,19 +3,19 @@ title: 安装 Azure SDK for Go
 description: 如何安装、引用 (vendor) 和配置 Azure SDK for Go。
 author: sptramer
 ms.author: sttramer
-ms.date: 01/30/2018
+ms.date: 03/14/2018
 ms.topic: article
 ms.devlang: go
 manager: carmonm
-ms.openlocfilehash: 580daf4f2e91eabf97e3acd21bda183c559b57da
-ms.sourcegitcommit: fcc1786d59d2e32c97a9a8e0748e06f564a961bd
+ms.openlocfilehash: a6a92e080aea1a92f47a9d7083f133ca05a47541
+ms.sourcegitcommit: 26520a8c6e812facb5b9432d68c370fa23c99888
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="installing-the-azure-sdk-for-go"></a>安装 Azure SDK for Go
+# <a name="install-the-azure-sdk-for-go"></a>安装 Azure SDK for Go
 
-欢迎使用 Azure SDK for Go！ 使用此 SDK 可以管理 Go 应用程序中的 Azure 服务并与之交互。
+欢迎使用 Azure SDK for Go！ 使用该 SDK 可以管理 Go 应用程序中的 Azure 服务并与之交互。
 
 ## <a name="get-the-azure-sdk-for-go"></a>获取 Azure SDK for Go
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/23/2018
 go get -u -d github.com/Azure/azure-storage-blob-go/...
 ```
 
-## <a name="vendoring-the-azure-sdk-for-go"></a>引用 (vendor) Azure SDK for Go
+## <a name="vendor-the-azure-sdk-for-go"></a>引用 (Vendor) Azure SDK for Go
 
 可以通过 [dep](https://github.com/golang/dep) 引用 Azure SDK for Go。 出于稳定原因，我们建议引用它。 若要使用 `dep` 支持，请将 `github.com/Azure/azure-sdk-for-go` 添加到 `Gopkg.toml` 的 `[[constraint]]` 节。 例如，若要引用版本 `14.0.0`，请添加以下条目：
 
@@ -37,7 +37,7 @@ name = "github.com/Azure/azure-sdk-for-go"
 version = "14.0.0"
 ```
 
-## <a name="including-the-azure-sdk-for-go-in-your-project"></a>在项目中包含 Azure SDK for Go
+## <a name="include-the-azure-sdk-for-go-in-your-project"></a>在项目中包含 Azure SDK for Go
 
 若要通过 Go 代码使用 Azure 服务，请导入所要交互的任何服务和所需的 `autorest` 模块。
 可以从 GoDoc 获取[可用服务](https://godoc.org/github.com/Azure/azure-sdk-for-go)和 [AutoRest 包](https://godoc.org/github.com/Azure/go-autorest)的完整可用模块列表。 需要在 `go-autorest` 中使用的最常见包为：
