@@ -3,15 +3,17 @@ title: 面向 Go 开发人员的工具
 description: 操作 Azure SDK for Go 和 Azure 服务时可用的工具
 author: sptramer
 ms.author: sttramer
-ms.date: 01/30/2018
-ms.topic: article
-ms.devlang: go
 manager: carmonm
-ms.openlocfilehash: 054965eb1ea4f1a7556e2968dfbe07b2db69d26f
-ms.sourcegitcommit: fcc1786d59d2e32c97a9a8e0748e06f564a961bd
+ms.date: 01/30/2018
+ms.topic: conceptual
+ms.prod: azure
+ms.technology: azure-sdk-go
+ms.devlang: go
+ms.openlocfilehash: 2ea44fb8a4fdd6098bb44d3b5092cfbc352b424d
+ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tools-for-developers-using-the-azure-sdk-for-go"></a>使用 Azure SDK for Go 的开发人员可用的工具
 

@@ -3,15 +3,18 @@ title: 用于容器的 Azure SDK for Go 示例
 description: Azure SDK for Go 中用于使用 ACI 和 AKS 的选定示例。
 author: sptramer
 ms.author: sttramer
-ms.date: 03/21/2018
-ms.topic: article
-ms.devlang: go
 manager: carmonm
-ms.openlocfilehash: 9a13c098a54b32e63ce681aa6b9efbe5e73d5bf2
-ms.sourcegitcommit: fcc1786d59d2e32c97a9a8e0748e06f564a961bd
+ms.date: 03/21/2018
+ms.topic: sample
+ms.prod: azure
+ms.technology: azure-sdk-go
+ms.service: container-service
+ms.devlang: go
+ms.openlocfilehash: 47d8e8a92c2aaf657156b8c0047adafe87e459ee
+ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-sdk-for-go-samples-for-containers"></a>用于容器的 Azure SDK for Go 示例
 
