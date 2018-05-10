@@ -4,16 +4,19 @@ description: 了解 Azure SDK for Go 中提供的身份验证方法及其用法�
 services: azure
 author: sptramer
 ms.author: sttramer
-ms.date: 04/03/2018
-ms.topic: article
-ms.service: azure
-ms.devlang: go
 manager: carmonm
-ms.openlocfilehash: 39f9dc5a7cdf9ab84cfd9264446bacb31392ca80
-ms.sourcegitcommit: 59d2b4c9d8da15fbbd15e36551093219fdaf256e
+ms.date: 04/03/2018
+ms.topic: conceptual
+ms.prod: azure
+ms.technology: azure-sdk-go
+ms.devlang: go
+ms.service: active-directory
+ms.component: authentication
+ms.openlocfilehash: 370f5607b89c0044022f7987d06c3a55c9d6f352
+ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="authentication-methods-in-the-azure-sdk-for-go"></a>Azure SDK for Go 中的身份验证方法
 
@@ -84,6 +87,27 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 import "github.com/Azure/go-autorest/autorest/azure/auth"
 authorizer, err := auth.NewAuthorizerFromEnvironment()
 ```
+
+### <a name="authentication-on-azure-stack"></a>Azure Stack 上的身份验证
+
+若要在 Azure Stack 上进行身份验证，需要设置以下变量：
+
+| 环境变量 | 说明  |
+|----------------------|--------------|
+| `AZURE_AD_ENDPOINT` | Active Directory 终结点。 |
+| `AZURE_AD_RESOURCE` | Active Directory 资源 ID。 |
+
+可以从 Azure Stack 元数据信息中检索这些变量。 若要检索元数据，请在 Azure Stack 环境中打开 Web 浏览器并使用 url：`(ResourceManagerURL)/metadata/endpoints?api-version=1.0`
+
+`ResourceManagerURL` 因 Azure Stack 部署的区域名称、计算机名称和外部完全限定的域名 (FQDN) 而异：
+
+| 环境 | ResourceManagerURL |
+|----------------------|--------------|
+| 开发工具包 | `https://management.local.azurestack.external/` |
+| 集成系统 | `https://management.(region).ext-(machine-name).(FQDN)` |
+
+有关如何在 Azure Stack 上使用适用于 Go 的 Azure SDK 的更多详细信息，请参阅[在 Azure Stack 中将 API 版本配置文件与 Go 配合使用](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-version-profiles-go)
+
 
 ## <a name="use-file-based-authentication"></a>使用基于文件的身份验证
 
