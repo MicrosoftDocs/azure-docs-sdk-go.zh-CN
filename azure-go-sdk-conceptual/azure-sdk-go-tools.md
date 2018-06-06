@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.openlocfilehash: 2ea44fb8a4fdd6098bb44d3b5092cfbc352b424d
-ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
+ms.openlocfilehash: 1e122ab161766023ea146329a5edb13143699b8b
+ms.sourcegitcommit: b81b17cbb934399c195bfdcb87137aee935f5234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34755526"
 ---
 # <a name="tools-for-developers-using-the-azure-sdk-for-go"></a>使用 Azure SDK for Go 的开发人员可用的工具
 
@@ -40,10 +41,3 @@ Visual Studio Code 是一个轻型编辑器，它通过扩展针对 Go 语言提
 
 > [!div class="nextstepaction"]
 > [获取 dep 依赖关系管理器](https://github.com/tools/godep)
-
-## <a name="telemetry-with-application-insights"></a>使用 Application Insights 遥测
-
-[Application Insights](https://azure.microsoft.com/en-us/services/application-insights/) 是一个分析产品，使用它可以轻松地从应用程序收集遥测信息，并与 Azure 生态系统、Visual Studio Team Services 和 GitHub 集成。 可以在许多应用程序中使用 Application Insights。Microsoft 提供了 Go SDK 来方便使用 Application Insights。
-
-> [!div class="nextstepaction"]
-> [获取适用于 Go SDK 的 Application Insights](https://github.com/Microsoft/ApplicationInsights-Go) 
