@@ -15,6 +15,7 @@ ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32319792"
 ---
 # <a name="azure-sdk-for-go-samples-for-azure-sql-database"></a><span data-ttu-id="d9d54-103">用于 Azure SQL 数据库的 Azure SDK for Go 示例</span><span class="sxs-lookup"><span data-stu-id="d9d54-103">Azure SDK for Go samples for Azure SQL Database</span></span>
 
