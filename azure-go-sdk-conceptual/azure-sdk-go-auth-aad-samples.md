@@ -15,6 +15,7 @@ ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32319843"
 ---
 # <a name="azure-sdk-for-go-samples-for-authentication-and-aad"></a>用于身份验证和 AAD 的 Azure SDK for Go 示例
 
