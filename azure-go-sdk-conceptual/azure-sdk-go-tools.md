@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.openlocfilehash: 1e122ab161766023ea146329a5edb13143699b8b
-ms.sourcegitcommit: b81b17cbb934399c195bfdcb87137aee935f5234
+ms.openlocfilehash: 25b46e3a1636c39e261ba11c6f8939d8721cc693
+ms.sourcegitcommit: 79d216c6b0442d0f3b3660ff2a34dc8b2049390c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34755526"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37093152"
 ---
 # <a name="tools-for-developers-using-the-azure-sdk-for-go"></a>使用 Azure SDK for Go 的开发人员可用的工具
 
@@ -40,4 +40,4 @@ Visual Studio Code 是一个轻型编辑器，它通过扩展针对 Go 语言提
 由于尚未官方的解决方案，我们可以通过多种方法来管理包的依赖关系以及执行 Go 引用 (vendor)。 执行此管理的建议方法是使用 `dep` 依赖关系管理器。 Azure SDK for Go 使用 dep 执行引用，并且保证使用 dep 可以正确获取其他任何项目的依赖关系。
 
 > [!div class="nextstepaction"]
-> [获取 dep 依赖关系管理器](https://github.com/tools/godep)
+> [获取 dep 依赖关系管理器](https://github.com/golang/dep)
