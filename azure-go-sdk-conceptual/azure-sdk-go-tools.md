@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.openlocfilehash: 25b46e3a1636c39e261ba11c6f8939d8721cc693
-ms.sourcegitcommit: 79d216c6b0442d0f3b3660ff2a34dc8b2049390c
+ms.openlocfilehash: 006d140bffb66fdd769a14511232d4ea5081811d
+ms.sourcegitcommit: 181d4e0b164cf39b3feac346f559596bd19c94db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37093152"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38066976"
 ---
 # <a name="tools-for-developers-using-the-azure-sdk-for-go"></a>使用 Azure SDK for Go 的开发人员可用的工具
 
@@ -22,7 +22,7 @@ ms.locfileid: "37093152"
 
 ## <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Azure CLI 2.0 提供一个命令行接口用于在订阅中创建和配置 Azure 资源。 借助 CLI 可以快速开始生成通用和共享的 Azure 资源，以便专注于服务的更复杂用法。 CLI 提供查询和筛选功能，使用它可以通过管道将输出直接传送到偏好的命令行工具。 可在本地系统上以 Docker 映像的形式或者通过 [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) 来安装 CLI。
+Azure CLI 2.0 提供一个命令行接口用于在订阅中创建和配置 Azure 资源。 借助 CLI 可以快速开始生成通用和共享的 Azure 资源，以便专注于服务的更复杂用法。 CLI 提供查询和筛选功能，使用它可以通过管道将输出直接传送到偏好的命令行工具。 可在本地系统上以 Docker 映像的形式或者通过 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 来安装 CLI。
 
 > [!div class="nextstepaction"]
 > [安装 Azure CLI 2.0](/cli/azure/install-azure-cli)
