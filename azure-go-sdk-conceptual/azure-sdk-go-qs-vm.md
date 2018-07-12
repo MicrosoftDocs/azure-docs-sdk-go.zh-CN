@@ -10,16 +10,16 @@ ms.prod: azure
 ms.technology: azure-sdk-go
 ms.service: virtual-machines
 ms.devlang: go
-ms.openlocfilehash: 1fbcc54df2a2aebce56c5a5800361f3d3aed1ccc
-ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
+ms.openlocfilehash: 7592e8617436a76dd27cac5269971051982425bf
+ms.sourcegitcommit: 181d4e0b164cf39b3feac346f559596bd19c94db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32319928"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38067010"
 ---
 # <a name="quickstart-deploy-an-azure-virtual-machine-from-a-template-with-the-azure-sdk-for-go"></a>快速入门：使用 Azure SDK for Go 从模板部署 Azure 虚拟机
 
-本快速入门重点介绍如何使用 Azure SDK for Go 从模板部署资源。 模板是 [Azure 资源组](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)中包含的所有资源的快照。 在执行有用任务的过程中，你将会不断熟悉该 SDK 的功能和约定。
+本快速入门重点介绍如何使用 Azure SDK for Go 从模板部署资源。 模板是 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)中包含的所有资源的快照。 在执行有用任务的过程中，你将会不断熟悉该 SDK 的功能和约定。
 
 在本快速入门结束时，将会运行一个可以使用用户名和密码登录的 VM。
 
@@ -35,8 +35,7 @@ ms.locfileid: "32319928"
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-
-若要以非交互方式登录到应用程序，需要一个服务主体。 服务主体是基于角色的访问控制 (RBAC) 的一部分，该访问控制创建唯一用户标识。 若要使用 CLI 创建新的服务主体，请运行以下命令：
+若要以非交互方式通过应用程序登录到 Azure，需要一个服务主体。 服务主体是基于角色的访问控制 (RBAC) 的一部分，该访问控制创建唯一用户标识。 若要使用 CLI 创建新的服务主体，请运行以下命令：
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name az-go-vm-quickstart --sdk-auth > quickstart.auth

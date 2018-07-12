@@ -12,12 +12,12 @@ ms.technology: azure-sdk-go
 ms.devlang: go
 ms.service: active-directory
 ms.component: authentication
-ms.openlocfilehash: 370f5607b89c0044022f7987d06c3a55c9d6f352
-ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
+ms.openlocfilehash: c7970167070bdf1f3fc75692f3e34268801c65df
+ms.sourcegitcommit: 181d4e0b164cf39b3feac346f559596bd19c94db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32319877"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38066993"
 ---
 # <a name="authentication-methods-in-the-azure-sdk-for-go"></a>Azure SDK for Go 中的身份验证方法
 
@@ -32,8 +32,8 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 | 基于证书的身份验证 | 具有一个针对 Azure Active Directory (AAD) 用户或服务主体配置的 X509 证书。 有关详细信息，请参阅 [Azure Active Directory 中基于证书的身份验证入门]。 |
 | 客户端凭据 | 已配置一个服务主体，该服务主体是针对此应用程序或它所属的应用程序类设置的。 有关详细信息，请参阅[使用 Azure CLI 2.0 创建服务主体]。 |
 | 托管服务标识 (MSI) | 应用程序在使用托管服务标识 (MSI) 配置的 Azure 资源中运行。 有关详细信息，请参阅 [Azure 资源的托管服务标识 (MSI)]。 |
-| 设备令牌 | 应用程序预期只以交互方式使用，并且包含各种用户，这些用户有可能来自多个 AAD 租户。 用户可以访问 Web 浏览器进行登录。 有关详细信息，请参阅[使用设备令牌身份验证](#use-device-token-authentication)。|
-| 用户名/密码 | 某个交互式应用程序无法使用其他任何身份验证方法。 没有为用户 AAD 登录启用多重身份验证。 |
+| 设备令牌 | 应用程序预期只以交互方式使用，并且包含各种用户，这些用户有可能来自多个 AAD 租户。 用户可以访问用于登录的 Web 浏览器。 有关详细信息，请参阅[使用设备令牌身份验证](#use-device-token-authentication)。|
+| 用户名/密码 | 某个交互式应用程序无法使用其他任何身份验证方法。 用户没有为其 AAD 登录启用多重身份验证。 |
 
 > [!IMPORTANT]
 > 如果使用的身份验证类型不是客户端凭据，则必须在 Azure Active Directory 中注册应用程序。 有关操作方法，请参阅[将应用程序与 Azure Active Directory 集成](/azure/active-directory/develop/active-directory-integrating-applications)。
@@ -107,7 +107,7 @@ authorizer, err := auth.NewAuthorizerFromEnvironment()
 | 开发工具包 | `https://management.local.azurestack.external/` |
 | 集成系统 | `https://management.(region).ext-(machine-name).(FQDN)` |
 
-有关如何在 Azure Stack 上使用适用于 Go 的 Azure SDK 的更多详细信息，请参阅[在 Azure Stack 中将 API 版本配置文件与 Go 配合使用](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-version-profiles-go)
+有关如何在 Azure Stack 上使用适用于 Go 的 Azure SDK 的更多详细信息，请参阅[在 Azure Stack 中将 API 版本配置文件与 Go 配合使用](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-go)
 
 
 ## <a name="use-file-based-authentication"></a>使用基于文件的身份验证
@@ -131,7 +131,7 @@ authorizer, err := NewAuthorizerFromFile(azure.PublicCloud.ResourceManagerEndpoi
 
 ## <a name="use-device-token-authentication"></a>使用设备令牌身份验证
 
-如果希望用户以交互方式登录，最好是通过设备令牌身份验证提供该功能。 此身份验证流将为用户传递一个可粘贴到 Microsoft 登录站点的令牌，然后，用户可在该站点上使用 Azure Active Directory (AAD) 帐户登录。 与标准的用户名/密码身份验证不同，此身份验证方法支持已启用多重身份验证的帐户。
+如果希望用户以交互方式登录，最好是通过设备令牌身份验证提供该功能。 此身份验证流将为用户传递一个可粘贴到 Microsoft 登录站点的令牌，然后，用户可在该站点上使用 Azure Active Directory (AAD) 帐户进行身份验证。 与标准的用户名/密码身份验证不同，此身份验证方法支持已启用多重身份验证的帐户。
 
 若要使用设备令牌身份验证，请使用 [NewDeviceFlowConfig](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#NewDeviceFlowConfig) 函数创建一个 [DeviceFlowConfig](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#DeviceFlowConfig) 授权者。 针对生成的对象调用 [Authorizer](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#DeviceFlowConfig.Authorizer) 以启动身份验证过程。 在整个身份验证流完成之前，设备流身份验证会一直阻止程序的执行。
 
