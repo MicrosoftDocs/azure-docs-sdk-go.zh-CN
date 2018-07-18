@@ -6,11 +6,12 @@ ms.date: 02/12/2018
 ms.topic: include
 ms.prod: azure
 ms.technology: azure-cli
-ms.openlocfilehash: 78d48eff1dd268b249633d4de7d1a15ac1e69750
-ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
+ms.openlocfilehash: fcbdadcd1d038f93ee609d5067dc2f7451e4badc
+ms.sourcegitcommit: 2a3bd491e087a1d0e7d269bed896c029357d62a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988053"
 ---
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
@@ -20,6 +21,5 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 |-----------------------------------------------|---|
 | 单击代码块右上角的“试用”。 | ![本文中的 Cloud Shell](../media/cloud-shell-try-it/cli-try-it.png) |
 | 在浏览器中打开 Cloud Shell。 | [![https://shell.azure.com/bash](../media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com/bash) |
-| 单击 [Azure 门户](https://portal.azure.com)右上角菜单上的“Cloud Shell”按钮。 |    ![门户中的 Cloud Shell](../media/cloud-shell-try-it/cloud-shell-menu.png) |
+| 单击 [Azure 门户](https://portal.azure.com)右上角菜单上的“Cloud Shell”按钮。 | ![门户中的 Cloud Shell](../media/cloud-shell-try-it/cloud-shell-menu.png) |
 |  |  |
-
