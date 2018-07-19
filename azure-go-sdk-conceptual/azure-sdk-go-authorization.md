@@ -12,12 +12,12 @@ ms.technology: azure-sdk-go
 ms.devlang: go
 ms.service: active-directory
 ms.component: authentication
-ms.openlocfilehash: c7970167070bdf1f3fc75692f3e34268801c65df
-ms.sourcegitcommit: 181d4e0b164cf39b3feac346f559596bd19c94db
+ms.openlocfilehash: f5e76fc745512a3a52172f560c3a24f510e96feb
+ms.sourcegitcommit: d1790b317a8fcb4d672c654dac2a925a976589d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38066993"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39039533"
 ---
 # <a name="authentication-methods-in-the-azure-sdk-for-go"></a>Azure SDK for Go 中的身份验证方法
 
@@ -30,19 +30,19 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 | 身份验证类型 | 建议的使用场合... |
 |---------------------|---------------------|
 | 基于证书的身份验证 | 具有一个针对 Azure Active Directory (AAD) 用户或服务主体配置的 X509 证书。 有关详细信息，请参阅 [Azure Active Directory 中基于证书的身份验证入门]。 |
-| 客户端凭据 | 已配置一个服务主体，该服务主体是针对此应用程序或它所属的应用程序类设置的。 有关详细信息，请参阅[使用 Azure CLI 2.0 创建服务主体]。 |
+| 客户端凭据 | 已配置一个服务主体，该服务主体是针对此应用程序或它所属的应用程序类设置的。 有关详细信息，请参阅[使用 Azure CLI 创建服务主体]。 |
 | 托管服务标识 (MSI) | 应用程序在使用托管服务标识 (MSI) 配置的 Azure 资源中运行。 有关详细信息，请参阅 [Azure 资源的托管服务标识 (MSI)]。 |
 | 设备令牌 | 应用程序预期只以交互方式使用，并且包含各种用户，这些用户有可能来自多个 AAD 租户。 用户可以访问用于登录的 Web 浏览器。 有关详细信息，请参阅[使用设备令牌身份验证](#use-device-token-authentication)。|
 | 用户名/密码 | 某个交互式应用程序无法使用其他任何身份验证方法。 用户没有为其 AAD 登录启用多重身份验证。 |
 
 > [!IMPORTANT]
 > 如果使用的身份验证类型不是客户端凭据，则必须在 Azure Active Directory 中注册应用程序。 有关操作方法，请参阅[将应用程序与 Azure Active Directory 集成](/azure/active-directory/develop/active-directory-integrating-applications)。
-
+>
 > [!NOTE]
 > 除非有特殊要求，否则请避免使用用户名/密码身份验证。 在适合使用基于用户的登录的情况下，通常可用改用设备令牌身份验证。
 
 [Azure Active Directory 中基于证书的身份验证入门]: /azure/active-directory/active-directory-certificate-based-authentication-get-started
-[使用 Azure CLI 2.0 创建服务主体]: /cli/azure/create-an-azure-service-principal-azure-cli
+[使用 Azure CLI 创建服务主体]: /cli/azure/create-an-azure-service-principal-azure-cli
 [Azure 资源的托管服务标识 (MSI)]: /azure/active-directory/managed-service-identity/overview
 
 可通过不同的方法使用这些身份验证类型。 [_基于环境的身份验证_](#use-environment-based-authentication)直接从程序的环境读取凭据。 [_基于文件的身份验证_](#use-file-based-authentication)加载包含服务主体凭据的文件。 [_基于客户端的身份验证_](#use-an-authentication-client)使用 Go 代码中的对象，你负责在程序执行期间提供凭据。 最后，[_设备令牌身份验证_](#use-device-token-authentication)要求用户使用令牌通过 Web 浏览器以交互方式登录，并且不能与基于环境或基于文件的身份验证配合使用。
@@ -54,7 +54,7 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 
 ## <a name="use-environment-based-authentication"></a>使用基于环境的身份验证
 
-如果在严格受控的环境（例如容器）中运行应用程序，基于环境的身份验证是自然而然的选择。 可以在运行应用程序之前配置 shell 环境，然后，Go SDK 会在运行时读取这些环境变量，以便在 Azure 中进行身份验证。 
+如果在严格受控的环境（例如容器）中运行应用程序，基于环境的身份验证是自然而然的选择。 可以在运行应用程序之前配置 shell 环境，然后，Go SDK 会在运行时读取这些环境变量，以便在 Azure 中进行身份验证。
 
 基于环境的身份验证支持除设备令牌以外的所有身份验证方法，其评估顺序如下：客户端凭据、证书、用户名/密码和托管服务标识 (MSI)。 如果未设置所需的环境变量，或者 SDK 遭到身份验证服务的拒绝，则会尝试下一个身份验证类型。 如果 SDK 无法从环境进行身份验证，则会返回错误。
 
@@ -65,7 +65,7 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 | __客户端凭据__ | `AZURE_TENANT_ID` | 服务主体所属的 Active Directory 租户的 ID。 |
 | | `AZURE_CLIENT_ID` | 服务主体的名称或 ID。 |
 | | `AZURE_CLIENT_SECRET` | 与服务主体关联的机密。 |
-| 证书 | `AZURE_TENANT_ID` | 证书注册到的 Active Directory 租户的 ID。 |
+| __证书__ | `AZURE_TENANT_ID` | 证书注册到的 Active Directory 租户的 ID。 |
 | | `AZURE_CLIENT_ID` | 与证书关联的应用程序客户端 ID。 |
 | | `AZURE_CERTIFICATE_PATH` | 客户端证书文件的路径。 |
 | | `AZURE_CERTIFICATE_PASSWORD` | 客户端证书的密码。 |
@@ -109,10 +109,9 @@ authorizer, err := auth.NewAuthorizerFromEnvironment()
 
 有关如何在 Azure Stack 上使用适用于 Go 的 Azure SDK 的更多详细信息，请参阅[在 Azure Stack 中将 API 版本配置文件与 Go 配合使用](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-go)
 
-
 ## <a name="use-file-based-authentication"></a>使用基于文件的身份验证
 
-只能配合 [Azure CLI 2.0](/cli/azure) 生成的、以本地文件格式存储的客户端凭据使用基于文件的身份验证。 在创建新服务主体时，可以使用 `--sdk-auth` 参数轻松创建此文件。 如果打算使用基于文件的身份验证，请确保在创建服务主体时提供此参数。 由于 CLI 在 `stdout` 中列显输出，因此会将输出重定向到某个文件。
+仅当客户端凭据以 [Azure CLI](/cli/azure) 生成的本地文件格式存储时，基于文件的身份验证才能用于这些凭据。 在创建新服务主体时，可以使用 `--sdk-auth` 参数轻松创建此文件。 如果打算使用基于文件的身份验证，请确保在创建服务主体时提供此参数。 由于 CLI 在 `stdout` 中列显输出，因此会将输出重定向到某个文件。
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth > azure.auth
@@ -127,7 +126,7 @@ import "github.com/Azure/go-autorest/autorest/azure/auth"
 authorizer, err := NewAuthorizerFromFile(azure.PublicCloud.ResourceManagerEndpoint)
 ```
 
-有关使用服务主体和管理其访问权限的详细信息，请参阅[使用 Azure CLI 2.0 创建服务主体]。
+有关使用服务主体和管理其访问权限的详细信息，请参阅[使用 Azure CLI 创建服务主体]。
 
 ## <a name="use-device-token-authentication"></a>使用设备令牌身份验证
 

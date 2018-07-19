@@ -4,18 +4,18 @@ description: 使用 Azure SDK for Go 部署虚拟机。
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 04/03/2018
+ms.date: 07/13/2018
 ms.topic: quickstart
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.service: virtual-machines
 ms.devlang: go
-ms.openlocfilehash: 7592e8617436a76dd27cac5269971051982425bf
-ms.sourcegitcommit: 181d4e0b164cf39b3feac346f559596bd19c94db
+ms.openlocfilehash: 6b1de35748fb7694d45715fa7f028d5730530d2e
+ms.sourcegitcommit: d1790b317a8fcb4d672c654dac2a925a976589d4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38067010"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39039550"
 ---
 # <a name="quickstart-deploy-an-azure-virtual-machine-from-a-template-with-the-azure-sdk-for-go"></a>快速入门：使用 Azure SDK for Go 从模板部署 Azure 虚拟机
 
@@ -27,9 +27,9 @@ ms.locfileid: "38067010"
 
 [!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)]
 
-如果使用本地安装的 Azure CLI，本快速入门需要 CLI __2.0.28__ 或更高版本。 请运行 `az --version`，确保 CLI 安装满足此要求。 如需安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。
+如果使用本地安装的 Azure CLI，本快速入门需要 CLI __2.0.28__ 或更高版本。 请运行 `az --version`，确保 CLI 安装满足此要求。 如需安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-## <a name="install-the-azure-sdk-for-go"></a>安装 Azure SDK for Go 
+## <a name="install-the-azure-sdk-for-go"></a>安装 Azure SDK for Go
 
 [!INCLUDE [azure-sdk-go-get](includes/azure-sdk-go-get.md)]
 
@@ -242,7 +242,9 @@ func createDeployment() (deployment resources.DeploymentExtended, err error) {
     }
 ```
 
-此代码遵循的模式与创建资源组相同。 将创建新客户端以便能够在 Azure 中进行身份验证，然后调用一个方法。 该方法甚至与资源组的对应方法同名 (`CreateOrUpdate`)。 在整个 SDK 中都可以看到此模式。 执行类似工作的方法通常是同名的。
+此代码遵循的模式与创建资源组相同。 将创建新客户端以便能够在 Azure 中进行身份验证，然后调用一个方法。
+该方法甚至与资源组的对应方法同名 (`CreateOrUpdate`)。 在整个 SDK 中都可以看到此模式。
+执行类似工作的方法通常是同名的。
 
 最大的差别在于 `deploymentsClient.CreateOrUpdate` 方法的返回值。 此值的类型为 [Future](https://godoc.org/github.com/Azure/go-autorest/autorest/azure#Future)，该类型遵循 [Future 设计模式](https://en.wikipedia.org/wiki/Futures_and_promises)。 Future 表示 Azure 中长时间运行的，可以轮询、取消或阻止其完成的操作。
 
