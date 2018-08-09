@@ -10,12 +10,12 @@ ms.prod: azure
 ms.technology: azure-sdk-go
 ms.service: active-directory
 ms.devlang: go
-ms.openlocfilehash: 278ee81e180287abf3152779821b7dfb76a487e3
-ms.sourcegitcommit: 2a3bd491e087a1d0e7d269bed896c029357d62a6
+ms.openlocfilehash: dfaed972f23daa92fcec686cf34ee636aa624b9a
+ms.sourcegitcommit: 0f581979216f7c9d4913681a6d9f6fe09af26e43
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988001"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39475868"
 ---
 # <a name="azure-sdk-for-go-samples-for-authentication-and-aad"></a>用于身份验证和 AAD 的 Azure SDK for Go 示例
 
@@ -23,8 +23,8 @@ ms.locfileid: "38988001"
 
 [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples) 上提供了 Azure SDK for Go 的所有示例。
 
-| 名称 | 说明 |
+| 名称 | Description |
 |------|-------------|
-| [iam/oauth](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/iam/oauth.go) | 如何在 Azure 中进行身份验证以使用服务。 |
-| [authorization/auth](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/authorization/auth.go) | 添加、删除和检查 AAD 角色。 |
+| [internal/iam/authorizers](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/internal/iam/authorizers.go) | 如何在 Azure 中进行身份验证以使用服务。 |
+| [authorization/authorization](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/authorization/authorization.go) | 添加、删除和检查 AAD 角色。 |
 | [graphrbac/graph](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/graphrbac/graph.go) | 检查并创建服务主体和 AAD 应用程序。 将机密添加到现有服务主体或应用程序。 |
