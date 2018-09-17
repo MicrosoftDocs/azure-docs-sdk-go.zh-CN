@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.openlocfilehash: 3388359bba791c87025b6ffd0e6b476f95589f73
-ms.sourcegitcommit: 81e97407e6139375bf7357045e818c87a17dcde1
+ms.openlocfilehash: 013a771345d96f0fa8dbece3218a01650744f70b
+ms.sourcegitcommit: 8b9e10b960150dc08f046ab840d6a5627410db29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36262968"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44059180"
 ---
 # <a name="install-the-azure-sdk-for-go"></a>安装 Azure SDK for Go
 
@@ -37,9 +37,9 @@ ms.locfileid: "36262968"
 
 ## <a name="vendor-the-azure-sdk-for-go"></a>引用 (Vendor) Azure SDK for Go
 
-可以通过 [dep](https://github.com/golang/dep) 引用 Azure SDK for Go。 出于稳定原因，我们建议引用它。 若要使用 `dep` 支持，请将 `github.com/Azure/azure-sdk-for-go` 添加到 `Gopkg.toml` 的 `[[constraint]]` 节。 例如，若要引用版本 `14.0.0`，请添加以下条目：
+可以通过 [dep](https://github.com/golang/dep) 引用 Azure SDK for Go。 出于稳定原因，我们建议引用它。 若要在自己的项目中使用 `dep`，请将 `github.com/Azure/azure-sdk-for-go` 添加到 `Gopkg.toml` 的 `[[constraint]]` 节。 例如，若要引用版本 `14.0.0`，请添加以下条目：
 
-```
+```toml
 [[constraint]]
 name = "github.com/Azure/azure-sdk-for-go"
 version = "14.0.0"
@@ -50,7 +50,7 @@ version = "14.0.0"
 若要通过 Go 代码使用 Azure 服务，请导入所要交互的任何服务和所需的 `autorest` 模块。
 可以从 GoDoc 获取[可用服务](https://godoc.org/github.com/Azure/azure-sdk-for-go)和 [AutoRest 包](https://godoc.org/github.com/Azure/go-autorest)的完整可用模块列表。 需要在 `go-autorest` 中使用的最常见包为：
 
-| 程序包 | 说明 |
+| 程序包 | Description |
 |---------|-------------|
 | [github.com/Azure/go-autorest/autorest][autorest] | 用于处理服务客户端身份验证的对象 |
 | [github.com/Azure/go-autorest/autorest/azure][autorest/azure] | 用于与 Azure 服务交互的常量 |
@@ -62,13 +62,14 @@ version = "14.0.0"
 [autorest/adal]: https://godoc.org/github.com/Azure/go-autorest/autorest/adal
 [autorest/to]: https://godoc.org/github.com/Azure/go-autorest/autorest/to
 
-Azure 模块服务的版本控制独立于模块的 SDK API。 这些版本是模块导入路径的一部分，来自_服务版本_或_配置文件_。 目前，我们建议将特定的服务版本用于开发和发布。 服务位于 `services` 模块下面。 导入的完整路径是服务名称，后接 `YYYY-MM-DD` 格式的版本，再后接服务名称。 例如，若要包含计算服务的 `2017-03-30` 版本：
+Go 包和 Azure 服务独立进行版本控制。 服务版本是模块导入路径的一部分，位于 `services` 模块下方。 模块的完整路径是服务名称，后接 `YYYY-MM-DD` 格式的版本，再后接服务名称。 例如，若要导入计算服务的 `2017-03-30` 版本：
 
 ```go
 import "github.com/Azure/azure-sdk-for-go/services/compute/mgmt/2017-03-30/compute"
 ```
 
-目前，除外另有原因，否则我们建议使用最新版本的服务。
+建议你在开始开发时使用最新版本的服务，并保持一致。
+即使在此期间没有 Go SDK 更新，服务要求也可能会在版本之间发生变化，从而可能破坏你的代码。
 
 如果需要服务的统一快照，也可以选择单个配置文件版本。 目前，唯一锁定的配置文件为版本 `2017-03-09`，其中可能不包含服务的最新功能。 配置文件位于 `profiles` 模块下，其版本采用 `YYYY-MM-DD` 格式。 服务根据其配置文件版本分组。 例如，若要从 `2017-03-09` 配置文件导入 Azure 资源管理模块：
 

@@ -4,22 +4,21 @@ description: Azure SDK for Go 中用于使用 Azure Active Directory (AAD) 和�
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 03/21/2018
+ms.date: 09/05/2018
 ms.topic: sample
-ms.prod: azure
 ms.technology: azure-sdk-go
 ms.service: active-directory
 ms.devlang: go
-ms.openlocfilehash: dfaed972f23daa92fcec686cf34ee636aa624b9a
-ms.sourcegitcommit: 0f581979216f7c9d4913681a6d9f6fe09af26e43
+ms.openlocfilehash: ace50d88ac57622b90e4070a6ca8d6fc0a52afac
+ms.sourcegitcommit: 8b9e10b960150dc08f046ab840d6a5627410db29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39475868"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44059214"
 ---
 # <a name="azure-sdk-for-go-samples-for-authentication-and-aad"></a>用于身份验证和 AAD 的 Azure SDK for Go 示例
 
-下表链接到 Go 源代码的选定示例，这些示例可用于通过 Azure SDK for Go 进行身份验证以及使用 Azure Active Directory (AAD) 服务。
+下表链接到选定示例，这些示例演示如何通过 Azure SDK for Go 进行身份验证和使用 Azure Active Directory。
 
 [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples) 上提供了 Azure SDK for Go 的所有示例。
 

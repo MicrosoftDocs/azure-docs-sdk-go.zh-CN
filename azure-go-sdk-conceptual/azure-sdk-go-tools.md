@@ -1,20 +1,20 @@
 ---
-title: 面向 Go 开发人员的工具
+title: 使用 Azure SDK for Go 的开发人员可用的工具
 description: 操作 Azure SDK for Go 和 Azure 服务时可用的工具
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 07/13/2018
+ms.date: 09/05/2018
 ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.openlocfilehash: dfa3912ac13e6f6d52d607f9dcc150f3a5b57602
-ms.sourcegitcommit: d1790b317a8fcb4d672c654dac2a925a976589d4
+ms.openlocfilehash: 70cf7d645f47df29e8e42599a0acd75858144783
+ms.sourcegitcommit: 8b9e10b960150dc08f046ab840d6a5627410db29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39039499"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44059197"
 ---
 # <a name="tools-for-developers-using-the-azure-sdk-for-go"></a>使用 Azure SDK for Go 的开发人员可用的工具
 
@@ -29,22 +29,22 @@ Azure CLI 提供一个用于在订阅中创建和配置 Azure 资源的命令行
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-Visual Studio Code 是一个轻型编辑器，它通过扩展针对 Go 语言提供全面的支持。 这些扩展包括对自动填充、`impl` 模板、重构和调试等功能的支持。 Visual Studio Code 还为常用的开发人员工具（例如源代码管理）提供许多扩展，甚至提供扩展来直接与 Azure 服务交互。 Microsoft 维护一个官方的元扩展，其中包括这些 Azure 扩展，以及 Azure CLI 的交互接口。
+Visual Studio Code 是一个提供 Go 支持的轻量级编辑器。 此扩展提供自动完成、`impl` 模板、重构和调试等功能。 Visual Studio Code 还支持编辑器内的源代码管理访问，以及使用 Azure 服务的扩展。
 
 * [安装 Visual Studio Code](https://code.visualstudio.com/Download)
 * [获取 Visual Studio Code Go 扩展](https://code.visualstudio.com/docs/languages/go)
-* [获取 Azure 工具扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-azureextensionpack)
+* [获取 Visual Studio Azure 工具扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-azureextensionpack)
 
 ## <a name="cicd-with-azure-devops-project"></a>将 Azure DevOps Project 与 CI/CD 配合使用
 
-使用 Azure DevOps Project 管道，可以为 Go 应用程序设置持续生成和部署。 只需一个可用 git 存储库，便可进行设置，以便直接在 Azure 资源上部署和测试。 配置管道易于创建和管理，并且由于它直接在 Azure 上预配，因此你可以采用处理其他 Azure 资源的同一方式控制它。
+使用 Azure DevOps Project 管道可以为 Go 应用程序设置持续集成系统。 它所需要的只是一个 git 存储库，你可以直接在 Azure 上进行部署和测试。
 
 > [!div class="nextstepaction"]
-> [了解如何使用 Azure DevOps Project 创建 CI/CD 管道](/devops-project/azure-devops-project-go)
+> [了解如何使用 Azure DevOps Project 创建 CI/CD 管道](/azure/devops-project/azure-devops-project-go)
 
 ## <a name="dependency-management-with-dep"></a>使用 dep 进行依赖关系管理
 
-由于尚未官方的解决方案，我们可以通过多种方法来管理包的依赖关系以及执行 Go 引用 (vendor)。 执行此管理的建议方法是使用 `dep` 依赖关系管理器。 Azure SDK for Go 使用 dep 执行引用，并且保证使用 dep 可以正确获取其他任何项目的依赖关系。
+Azure SDK for Go 使用 dep 进行依赖关系管理。 使用 dep 命令可以提取 Go 应用程序的供应商需求、避免版本冲突并确保项目正常运行。
 
 > [!div class="nextstepaction"]
 > [获取 dep 依赖关系管理器](https://github.com/golang/dep)

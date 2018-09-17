@@ -5,34 +5,33 @@ services: azure
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 04/03/2018
+ms.date: 09/05/2018
 ms.topic: conceptual
-ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
 ms.service: active-directory
 ms.component: authentication
-ms.openlocfilehash: f5e76fc745512a3a52172f560c3a24f510e96feb
-ms.sourcegitcommit: d1790b317a8fcb4d672c654dac2a925a976589d4
+ms.openlocfilehash: 28fd4a4c0832ab19dcf52dc549d0ddc0d1eec6f1
+ms.sourcegitcommit: 8b9e10b960150dc08f046ab840d6a5627410db29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39039533"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44059095"
 ---
 # <a name="authentication-methods-in-the-azure-sdk-for-go"></a>Azure SDK for Go 中的身份验证方法
 
-Azure SDK for Go 提供各种身份验证类型和方法供应用程序使用。 支持的身份验证方法包括从环境变量提取信息，以及基于 Web 的交互式身份验证等等。 本文介绍该 SDK 中提供的身份验证类型及其用法。 此外，还阐述了有关选择最适合应用程序的身份验证类型的最佳做法。
+Azure SDK for Go 提供多种方式来使用 Azure 进行身份验证。 可通过不同的身份验证_方法_调用这些身份验证_类型_。 本文介绍可用的类型、方法以及如何选择最适合应用程序的方法。
 
 ## <a name="available-authentication-types-and-methods"></a>可用的身份验证类型和方法
 
-Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可通过不同的身份验证方法使用其中的每种身份验证类型，该 SDK 也正是通过这些方法将这些凭据用作输入。 下表描述了可用的身份验证类型，以及在哪些场合下建议让应用程序使用这些类型。
+Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可通过不同的身份验证方法使用每种身份验证类型，该 SDK 也正是通过这些方法将这些凭据用作输入。 下表描述了可用的身份验证类型，以及在哪些场合下建议让应用程序使用这些类型。
 
 | 身份验证类型 | 建议的使用场合... |
 |---------------------|---------------------|
 | 基于证书的身份验证 | 具有一个针对 Azure Active Directory (AAD) 用户或服务主体配置的 X509 证书。 有关详细信息，请参阅 [Azure Active Directory 中基于证书的身份验证入门]。 |
 | 客户端凭据 | 已配置一个服务主体，该服务主体是针对此应用程序或它所属的应用程序类设置的。 有关详细信息，请参阅[使用 Azure CLI 创建服务主体]。 |
 | 托管服务标识 (MSI) | 应用程序在使用托管服务标识 (MSI) 配置的 Azure 资源中运行。 有关详细信息，请参阅 [Azure 资源的托管服务标识 (MSI)]。 |
-| 设备令牌 | 应用程序预期只以交互方式使用，并且包含各种用户，这些用户有可能来自多个 AAD 租户。 用户可以访问用于登录的 Web 浏览器。 有关详细信息，请参阅[使用设备令牌身份验证](#use-device-token-authentication)。|
+| 设备令牌 | 你的应用程序应__仅__以交互方式使用。 用户可能已启用多重身份验证。 用户可以访问用于登录的 Web 浏览器。 有关详细信息，请参阅[使用设备令牌身份验证](#use-device-token-authentication)。|
 | 用户名/密码 | 某个交互式应用程序无法使用其他任何身份验证方法。 用户没有为其 AAD 登录启用多重身份验证。 |
 
 > [!IMPORTANT]
@@ -45,7 +44,12 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 [使用 Azure CLI 创建服务主体]: /cli/azure/create-an-azure-service-principal-azure-cli
 [Azure 资源的托管服务标识 (MSI)]: /azure/active-directory/managed-service-identity/overview
 
-可通过不同的方法使用这些身份验证类型。 [_基于环境的身份验证_](#use-environment-based-authentication)直接从程序的环境读取凭据。 [_基于文件的身份验证_](#use-file-based-authentication)加载包含服务主体凭据的文件。 [_基于客户端的身份验证_](#use-an-authentication-client)使用 Go 代码中的对象，你负责在程序执行期间提供凭据。 最后，[_设备令牌身份验证_](#use-device-token-authentication)要求用户使用令牌通过 Web 浏览器以交互方式登录，并且不能与基于环境或基于文件的身份验证配合使用。
+可通过不同的方法使用这些身份验证类型。
+
+* [_基于环境的身份验证_](#use-environment-based-authentication)直接从程序的环境读取凭据。
+* [_基于文件的身份验证_](#use-file-based-authentication)加载包含服务主体凭据的文件。
+* [_基于客户端的身份验证_](#use-an-authentication-client)使用代码中的对象，使你负责在程序执行期间提供凭据。
+* [_设备令牌身份验证_](#use-device-token-authentication)要求用户以交互方式通过 Web 浏览器使用令牌登录。
 
 所有身份验证函数和类型都在 `github.com/Azure/go-autorest/autorest/azure/auth` 包中提供。
 
@@ -54,13 +58,20 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 
 ## <a name="use-environment-based-authentication"></a>使用基于环境的身份验证
 
-如果在严格受控的环境（例如容器）中运行应用程序，基于环境的身份验证是自然而然的选择。 可以在运行应用程序之前配置 shell 环境，然后，Go SDK 会在运行时读取这些环境变量，以便在 Azure 中进行身份验证。
+如果在受控设置中运行应用程序，则基于环境的身份验证是一种自然选择。 使用此身份验证方法，可以在运行应用程序之前配置 shell 环境。 在运行时，Go SDK 读取这些环境变量，以使用 Azure 进行身份验证。
 
-基于环境的身份验证支持除设备令牌以外的所有身份验证方法，其评估顺序如下：客户端凭据、证书、用户名/密码和托管服务标识 (MSI)。 如果未设置所需的环境变量，或者 SDK 遭到身份验证服务的拒绝，则会尝试下一个身份验证类型。 如果 SDK 无法从环境进行身份验证，则会返回错误。
+基于环境的身份验证支持除设备令牌以外的所有身份验证方法，其评估顺序如下：
+
+* 客户端凭据
+* X509 证书
+* 用户名/密码
+* 托管服务标识 (MSI)
+
+如果身份验证类型具有未设置值或被拒绝，则该 SDK 会自动尝试下一种身份验证类型。 当没有更多类型可供尝试时，SDK 会返回错误。
 
 下表详细描述了需要为基于环境的身份验证支持的每种身份验证类型设置的环境变量。
 
-| 身份验证类型 | 环境变量 | 说明 |
+| 身份验证类型 | 环境变量 | Description |
 | ------------------- | -------------------- | ----------- |
 | __客户端凭据__ | `AZURE_TENANT_ID` | 服务主体所属的 Active Directory 租户的 ID。 |
 | | `AZURE_CLIENT_ID` | 服务主体的名称或 ID。 |
@@ -73,14 +84,14 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 | | `AZURE_CLIENT_ID` | 应用程序客户端 ID。 |
 | | `AZURE_USERNAME` | 用于登录的用户名。 |
 | | `AZURE_PASSWORD` | 用于登录的密码。 |
-| __MSI__ | | MSI 不要求设置任何凭据。 应用程序必须在配置为使用 MSI 的 Azure 资源中运行。 有关详细信息，请参阅 [Azure 资源的托管服务标识 (MSI)]。 |
+| __MSI__ | | MSI 身份验证不需要凭据。 应用程序必须在配置为使用 MSI 的 Azure 资源中运行。 有关详细信息，请参阅 [Azure 资源的托管服务标识 (MSI)]。 |
 
-如果需要连接到除默认 Azure 公有云以外的云或管理终结点，则还可以设置以下环境变量。 设置这些环境变量的最常见原因是要使用 Azure Stack、不同地理区域中的云，或 Azure 经典部署模型。
+若要连接到默认 Azure 公有云以外的云或管理终结点，请设置以下环境变量。 最常见的原因是要使用 Azure Stack、不同地理区域中的云，或经典部署模型。
 
-| 环境变量 | 说明  |
+| 环境变量 | Description  |
 |----------------------|--------------|
 | `AZURE_ENVIRONMENT` | 要连接到的云环境的名称。 |
-| `AZURE_AD_RESOURCE` | 连接时使用的 Active Directory 资源 ID。 这应该是指向管理终结点的 URI。 |
+| `AZURE_AD_RESOURCE` | 连接时要使用的 Active Directory 资源 ID，作为管理终结点的 URI。 |
 
 使用基于环境的身份验证时，请调用 [NewAuthorizerFromEnvironment](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#NewAuthorizerFromEnvironment) 函数来获取授权者对象。 然后，在客户端的 `Authorizer` 属性中设置此对象，以允许客户端访问 Azure。
 
@@ -93,7 +104,7 @@ authorizer, err := auth.NewAuthorizerFromEnvironment()
 
 若要在 Azure Stack 上进行身份验证，需要设置以下变量：
 
-| 环境变量 | 说明  |
+| 环境变量 | Description  |
 |----------------------|--------------|
 | `AZURE_AD_ENDPOINT` | Active Directory 终结点。 |
 | `AZURE_AD_RESOURCE` | Active Directory 资源 ID。 |
@@ -107,11 +118,11 @@ authorizer, err := auth.NewAuthorizerFromEnvironment()
 | 开发工具包 | `https://management.local.azurestack.external/` |
 | 集成系统 | `https://management.(region).ext-(machine-name).(FQDN)` |
 
-有关如何在 Azure Stack 上使用适用于 Go 的 Azure SDK 的更多详细信息，请参阅[在 Azure Stack 中将 API 版本配置文件与 Go 配合使用](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-go)
+有关如何在 Azure Stack 上使用 Azure SDK for Go 的详细信息，请参阅[在 Azure Stack 中将 API 版本配置文件与 Go 配合使用](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-go)
 
 ## <a name="use-file-based-authentication"></a>使用基于文件的身份验证
 
-仅当客户端凭据以 [Azure CLI](/cli/azure) 生成的本地文件格式存储时，基于文件的身份验证才能用于这些凭据。 在创建新服务主体时，可以使用 `--sdk-auth` 参数轻松创建此文件。 如果打算使用基于文件的身份验证，请确保在创建服务主体时提供此参数。 由于 CLI 在 `stdout` 中列显输出，因此会将输出重定向到某个文件。
+基于文件的身份验证使用由 [Azure CLI](/cli/azure) 生成的文件格式。 在创建新服务主体时，可以使用 `--sdk-auth` 参数轻松创建此文件。 如果打算使用基于文件的身份验证，请确保在创建服务主体时提供此参数。 由于 CLI 在 `stdout` 中列显输出，因此会将输出重定向到某个文件。
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth > azure.auth
@@ -142,7 +153,11 @@ authorizer, err := deviceConfig.Authorizer()
 
 ## <a name="use-an-authentication-client"></a>使用身份验证客户端
 
-如果需要特定的身份验证类型，并且愿意让程序执行相应的操作以从用户加载身份验证信息，则可以使用任何符合 [auth.AuthorizerConfig](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#AuthorizerConfig) 接口的客户端。 如果想要使用交互式程序、使用专用配置文件，或者某项要求导致无法使用其他身份验证方法，那么，请使用实现此接口的身份验证类型。
+如果需要特定的身份验证类型，并且愿意让程序执行相应的操作以从用户加载身份验证信息，则可以使用任何符合 [auth.AuthorizerConfig](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#AuthorizerConfig) 接口的客户端。 在以下情况下使用实现此接口的类型：
+
+* 编写交互式程序
+* 使用专用的配置文件
+* 有阻止使用内置身份验证方法的要求
 
 > [!WARNING]
 > 切勿在应用程序中对 Azure 凭据进行硬编码。 将机密放入应用程序二进制文件会使攻击者更容易提取这些机密，不管应用程序是否正在运行。 这会将凭据授权的所有 Azure 资源置于风险之中！
@@ -162,7 +177,7 @@ authorizer, err := deviceConfig.Authorizer()
 [DeviceFlowConfig]: https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#DeviceFlowConfig
 [UsernamePasswordConfig]: https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#UsernamePasswordConfig
 
-使用关联的 `New` 函数创建一个验证器，然后针对生成的对象调用 `Authorize` 以执行身份验证。 例如，若要使用基于证书的身份验证，请执行以下调用：
+使用关联的 `New` 函数创建一个验证器，然后针对生成的对象调用 `Authorize` 进行身份验证。 例如，若要使用基于证书的身份验证，请执行以下调用：
 
 ```go
 import "github.com/Azure/go-autorest/autorest/azure/auth"
