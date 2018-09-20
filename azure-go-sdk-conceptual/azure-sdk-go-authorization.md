@@ -11,12 +11,12 @@ ms.technology: azure-sdk-go
 ms.devlang: go
 ms.service: active-directory
 ms.component: authentication
-ms.openlocfilehash: 28fd4a4c0832ab19dcf52dc549d0ddc0d1eec6f1
-ms.sourcegitcommit: 8b9e10b960150dc08f046ab840d6a5627410db29
+ms.openlocfilehash: 8f94b9ba715c32263d324306cce69bd484c05702
+ms.sourcegitcommit: c435f6602524565d340aac5506be5e955e78f16c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44059095"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44711968"
 ---
 # <a name="authentication-methods-in-the-azure-sdk-for-go"></a>Azure SDK for Go 中的身份验证方法
 
@@ -30,7 +30,7 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 |---------------------|---------------------|
 | 基于证书的身份验证 | 具有一个针对 Azure Active Directory (AAD) 用户或服务主体配置的 X509 证书。 有关详细信息，请参阅 [Azure Active Directory 中基于证书的身份验证入门]。 |
 | 客户端凭据 | 已配置一个服务主体，该服务主体是针对此应用程序或它所属的应用程序类设置的。 有关详细信息，请参阅[使用 Azure CLI 创建服务主体]。 |
-| 托管服务标识 (MSI) | 应用程序在使用托管服务标识 (MSI) 配置的 Azure 资源中运行。 有关详细信息，请参阅 [Azure 资源的托管服务标识 (MSI)]。 |
+| Azure 资源的托管标识 | 应用程序在已使用托管标识配置的 Azure 资源上运行。 若要了解详细信息，请参阅 [Azure 资源的托管标识]。 |
 | 设备令牌 | 你的应用程序应__仅__以交互方式使用。 用户可能已启用多重身份验证。 用户可以访问用于登录的 Web 浏览器。 有关详细信息，请参阅[使用设备令牌身份验证](#use-device-token-authentication)。|
 | 用户名/密码 | 某个交互式应用程序无法使用其他任何身份验证方法。 用户没有为其 AAD 登录启用多重身份验证。 |
 
@@ -42,7 +42,7 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 
 [Azure Active Directory 中基于证书的身份验证入门]: /azure/active-directory/active-directory-certificate-based-authentication-get-started
 [使用 Azure CLI 创建服务主体]: /cli/azure/create-an-azure-service-principal-azure-cli
-[Azure 资源的托管服务标识 (MSI)]: /azure/active-directory/managed-service-identity/overview
+[Azure 资源的托管标识]: /azure/active-directory/managed-identities-azure-resources/overview
 
 可通过不同的方法使用这些身份验证类型。
 
@@ -65,7 +65,7 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 * 客户端凭据
 * X509 证书
 * 用户名/密码
-* 托管服务标识 (MSI)
+* Azure 资源的托管标识
 
 如果身份验证类型具有未设置值或被拒绝，则该 SDK 会自动尝试下一种身份验证类型。 当没有更多类型可供尝试时，SDK 会返回错误。
 
@@ -84,7 +84,7 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 | | `AZURE_CLIENT_ID` | 应用程序客户端 ID。 |
 | | `AZURE_USERNAME` | 用于登录的用户名。 |
 | | `AZURE_PASSWORD` | 用于登录的密码。 |
-| __MSI__ | | MSI 身份验证不需要凭据。 应用程序必须在配置为使用 MSI 的 Azure 资源中运行。 有关详细信息，请参阅 [Azure 资源的托管服务标识 (MSI)]。 |
+| __托管的标识__ | | 托管标识身份验证不需要凭据。 应用程序必须在配置为使用托管标识的资源上运行。 有关详细信息，请参阅 [Azure 资源的托管标识]。 |
 
 若要连接到默认 Azure 公有云以外的云或管理终结点，请设置以下环境变量。 最常见的原因是要使用 Azure Stack、不同地理区域中的云，或经典部署模型。
 
@@ -168,7 +168,7 @@ authorizer, err := deviceConfig.Authorizer()
 |---------------------|-----------------------|
 | 基于证书的身份验证 | [ClientCertificateConfig] |
 | 客户端凭据 | [ClientCredentialsConfig] |
-| 托管服务标识 (MSI) | [MSIConfig] |
+| Azure 资源的托管标识 | [MSIConfig] |
 | 用户名/密码 | [UsernamePasswordConfig] |
 
 [ClientCertificateConfig]: https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#ClientCertificateConfig
