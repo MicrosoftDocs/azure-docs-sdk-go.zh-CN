@@ -7,14 +7,13 @@ manager: carmonm
 ms.date: 09/05/2018
 ms.topic: sample
 ms.technology: azure-sdk-go
-ms.service: active-directory
 ms.devlang: go
-ms.openlocfilehash: ace50d88ac57622b90e4070a6ca8d6fc0a52afac
-ms.sourcegitcommit: 8b9e10b960150dc08f046ab840d6a5627410db29
+ms.openlocfilehash: 29a9d25d13abfb538be6c1d17a3508e86e55d16d
+ms.sourcegitcommit: 172f81dd6e4c6a275dc8031815aa87cdb488cbf0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44059214"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47231652"
 ---
 # <a name="azure-sdk-for-go-samples-for-authentication-and-aad"></a>用于身份验证和 AAD 的 Azure SDK for Go 示例
 
