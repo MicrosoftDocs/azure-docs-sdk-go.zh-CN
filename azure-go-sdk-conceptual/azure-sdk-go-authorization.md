@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.technology: azure-sdk-go
 ms.devlang: go
 ms.component: authentication
-ms.openlocfilehash: f5c2c56e43828f0bedad0b5781dc71991ce1fd3e
-ms.sourcegitcommit: 172f81dd6e4c6a275dc8031815aa87cdb488cbf0
+ms.openlocfilehash: c2c3dccfa8da5cfe57fee0b90139002068982560
+ms.sourcegitcommit: 887b15afcdeaf926a5f3d21b64e4045167fd062c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47231669"
+ms.lasthandoff: 10/21/2018
+ms.locfileid: "49481976"
 ---
 # <a name="authentication-methods-in-the-azure-sdk-for-go"></a>Azure SDK for Go 中的身份验证方法
 
@@ -70,20 +70,21 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 
 下表详细描述了需要为基于环境的身份验证支持的每种身份验证类型设置的环境变量。
 
-| 身份验证类型 | 环境变量 | Description |
-| ------------------- | -------------------- | ----------- |
-| __客户端凭据__ | `AZURE_TENANT_ID` | 服务主体所属的 Active Directory 租户的 ID。 |
-| | `AZURE_CLIENT_ID` | 服务主体的名称或 ID。 |
-| | `AZURE_CLIENT_SECRET` | 与服务主体关联的机密。 |
-| __证书__ | `AZURE_TENANT_ID` | 证书注册到的 Active Directory 租户的 ID。 |
-| | `AZURE_CLIENT_ID` | 与证书关联的应用程序客户端 ID。 |
-| | `AZURE_CERTIFICATE_PATH` | 客户端证书文件的路径。 |
-| | `AZURE_CERTIFICATE_PASSWORD` | 客户端证书的密码。 |
-| __用户名/密码__ | `AZURE_TENANT_ID` | 用户所属的 Active Directory 租户的 ID。 |
-| | `AZURE_CLIENT_ID` | 应用程序客户端 ID。 |
-| | `AZURE_USERNAME` | 用于登录的用户名。 |
-| | `AZURE_PASSWORD` | 用于登录的密码。 |
-| __托管的标识__ | | 托管标识身份验证不需要凭据。 应用程序必须在配置为使用托管标识的资源上运行。 有关详细信息，请参阅 [Azure 资源的托管标识]。 |
+
+|  身份验证类型   |     环境变量     |                                                                                                     Description                                                                                                      |
+|------------------------|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **客户端凭据** |      `AZURE_TENANT_ID`       |                                                                    服务主体所属的 Active Directory 租户的 ID。                                                                     |
+|                        |      `AZURE_CLIENT_ID`       |                                                                                       服务主体的名称或 ID。                                                                                       |
+|                        |    `AZURE_CLIENT_SECRET`     |                                                                                  与服务主体关联的机密。                                                                                   |
+|    **证书**     |      `AZURE_TENANT_ID`       |                                                                   证书注册到的 Active Directory 租户的 ID。                                                                    |
+|                        |      `AZURE_CLIENT_ID`       |                                                                              与证书关联的应用程序客户端 ID。                                                                              |
+|                        |   `AZURE_CERTIFICATE_PATH`   |                                                                                       客户端证书文件的路径。                                                                                       |
+|                        | `AZURE_CERTIFICATE_PASSWORD` |                                                                                       客户端证书的密码。                                                                                       |
+| **用户名/密码**  |      `AZURE_TENANT_ID`       |                                                                           用户所属的 Active Directory 租户的 ID。                                                                           |
+|                        |      `AZURE_CLIENT_ID`       |                                                                                              应用程序客户端 ID。                                                                                              |
+|                        |       `AZURE_USERNAME`       |                                                                                            用于登录的用户名。                                                                                             |
+|                        |       `AZURE_PASSWORD`       |                                                                                            用于登录的密码。                                                                                             |
+|  **托管的标识**  |                              | 托管标识身份验证不需要凭据。 应用程序必须在配置为使用托管标识的资源上运行。 有关详细信息，请参阅 [Azure 资源的托管标识]。 |
 
 若要连接到默认 Azure 公有云以外的云或管理终结点，请设置以下环境变量。 最常见的原因是要使用 Azure Stack、不同地理区域中的云，或经典部署模型。
 
