@@ -6,15 +6,15 @@ ms.author: sttramer
 manager: carmonm
 ms.date: 09/05/2018
 ms.topic: sample
-ms.technology: azure-sdk-go
+ms.subservice: development
 ms.service: sql-database
 ms.devlang: go
-ms.openlocfilehash: 1f8b011ad87b1be2a155120e4aab843b16c474a0
-ms.sourcegitcommit: 8b9e10b960150dc08f046ab840d6a5627410db29
+ms.openlocfilehash: 3ab231584aab1fbfd8ce1db255ff52d7d12422c3
+ms.sourcegitcommit: d3ca0f6c1579f0c6a4255b0b0e93b0d63ae77d6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44059045"
+ms.lasthandoff: 12/26/2018
+ms.locfileid: "53786025"
 ---
 # <a name="azure-sdk-for-go-samples-for-azure-sql-database"></a>用于 Azure SQL 数据库的 Azure SDK for Go 示例
 
