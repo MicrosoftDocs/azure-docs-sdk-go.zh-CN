@@ -9,13 +9,13 @@ ms.date: 09/05/2018
 ms.topic: conceptual
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.component: authentication
-ms.openlocfilehash: c2c3dccfa8da5cfe57fee0b90139002068982560
-ms.sourcegitcommit: 887b15afcdeaf926a5f3d21b64e4045167fd062c
+ms.subservice: authentication
+ms.openlocfilehash: c66d6e65f36586bbe5b030cc3b783057b39668db
+ms.sourcegitcommit: be967d413a8bf906470e65a97e61688faa9dd98a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2018
-ms.locfileid: "49481976"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55071144"
 ---
 # <a name="authentication-methods-in-the-azure-sdk-for-go"></a>Azure SDK for Go 中的身份验证方法
 
@@ -71,7 +71,7 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 下表详细描述了需要为基于环境的身份验证支持的每种身份验证类型设置的环境变量。
 
 
-|  身份验证类型   |     环境变量     |                                                                                                     Description                                                                                                      |
+|  身份验证类型   |     环境变量     |                                                                                                     说明                                                                                                      |
 |------------------------|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **客户端凭据** |      `AZURE_TENANT_ID`       |                                                                    服务主体所属的 Active Directory 租户的 ID。                                                                     |
 |                        |      `AZURE_CLIENT_ID`       |                                                                                       服务主体的名称或 ID。                                                                                       |
@@ -88,7 +88,7 @@ Azure SDK for Go 提供使用不同凭据集的多种身份验证类型。 可�
 
 若要连接到默认 Azure 公有云以外的云或管理终结点，请设置以下环境变量。 最常见的原因是要使用 Azure Stack、不同地理区域中的云，或经典部署模型。
 
-| 环境变量 | Description  |
+| 环境变量 | 说明  |
 |----------------------|--------------|
 | `AZURE_ENVIRONMENT` | 要连接到的云环境的名称。 |
 | `AZURE_AD_RESOURCE` | 连接时要使用的 Active Directory 资源 ID，作为管理终结点的 URI。 |
@@ -104,7 +104,7 @@ authorizer, err := auth.NewAuthorizerFromEnvironment()
 
 若要在 Azure Stack 上进行身份验证，需要设置以下变量：
 
-| 环境变量 | Description  |
+| 环境变量 | 说明  |
 |----------------------|--------------|
 | `AZURE_AD_ENDPOINT` | Active Directory 终结点。 |
 | `AZURE_AD_RESOURCE` | Active Directory 资源 ID。 |

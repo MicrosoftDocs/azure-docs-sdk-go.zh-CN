@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.openlocfilehash: 7990ec8bde5622078aa822fc7e66ba5c4384d682
-ms.sourcegitcommit: 3d26b464f196f8675c636ae792637d4c882fb92c
+ms.openlocfilehash: 2799e3a6c637036eeaf7b20adf8aa55a8a4ab400
+ms.sourcegitcommit: 4db332f5e43a5b43032ff9017805d5fd5a650d86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52337137"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55145526"
 ---
 # <a name="install-the-azure-sdk-for-go"></a>安装 Azure SDK for Go
 
@@ -50,7 +50,7 @@ version = "14.0.0"
 若要通过 Go 代码使用 Azure 服务，请导入所要交互的任何服务和所需的 `autorest` 模块。
 可以从 GoDoc 获取[可用服务](https://godoc.org/github.com/Azure/azure-sdk-for-go)和 [AutoRest 包](https://godoc.org/github.com/Azure/go-autorest)的完整可用模块列表。 需要在 `go-autorest` 中使用的最常见包为：
 
-| 程序包 | Description |
+| 程序包 | 说明 |
 |---------|-------------|
 | [github.com/Azure/go-autorest/autorest][autorest] | 用于处理服务客户端身份验证的对象 |
 | [github.com/Azure/go-autorest/autorest/azure][autorest/azure] | 用于与 Azure 服务交互的常量 |
@@ -92,7 +92,7 @@ import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/resources/mgmt/res
 
 * [在 Azure 服务中进行身份验证](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/internal/iam)
 * [使用 SSH 身份验证部署新虚拟机](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/compute)
-* [将容器映像部署到 Azure 容器实例](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/containerinstance)
-* [在 Azure Kubernetes 服务中创建群集](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/containerservice)
+* [将容器映像部署到 Azure 容器实例](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/compute)
+* [在 Azure Kubernetes 服务中创建群集](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/compute)
 * [使用 Azure 存储服务](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage)
 * [Azure SDK for Go 的所有示例](https://github.com/azure-samples/azure-sdk-for-go-samples)
